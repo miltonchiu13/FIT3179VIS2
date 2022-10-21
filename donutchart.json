@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple donut chart with embedded data.",
+  "data": {
+    "values": [
+      {"category": "China", "value": 17.88, "color": "2020"},
+      {"category": "India", "value": 17.76, "color": "2020"},
+      {"category": "United States", "value": 4.24, "color": "2020"},
+      {"category": "Brazil", "value": 2.7, "color": "2020"},
+      {"category": "Nigeria", "value": 2.75, "color": "2020"},
+      {"category": "Pakistan", "value": 2.96, "color": "2020"},
+      {"category": "Indonesia", "value": 3.46, "color": "2020"},
+      {"category": "Other", "value": 48.25, "color": "2020"}
+    ]
+  },
+  "mark": {
+    "type": "arc",
+    "innerRadius": 60,
+    "stroke": "#fff",
+    "outerRadius": 100
+  },
+  "encoding": {
+    "theta": {"field": "value", "type": "quantitative", "stack": true},
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Country",
+      "legend": {
+        "direction": "vertical",
+        "orient": "right",
+        "titleFontSize": 20,
+        "labelFontSize": 18
+      },
+      "scale": {
+        "domain": [
+          "China",
+          "India",
+          "United States",
+          "Brazil",
+          "Nigeria",
+          "Pakistan",
+          "Indonesia",
+          "Other"
+        ],
+        "range": [
+          "#E03426",
+          "#f28e2b",
+          "#4f7cba",
+          "#f8b620",
+          "#33a65c",
+          "#fc719e",
+          "#aa3377",
+          "#bbbbbb"
+        ]
+      }
+    },
+    "tooltip": [
+      {"field": "category", "type": "nominal", "title": "Country"},
+      {"title": "Year", "field": "color"},
+      {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Population Percentage"
+      }
+    ]
+  },
+  "config": {}
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Exploring World Population</title>
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-responsive-min.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-responsive-min.css" />
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="./styles.css" media="all">
+
+
+</head>
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1800px">
+
+
+
+  <header class="w3-container w3-center w3-padding-32"> 
+    <h1><b>Exploring World Population
+    
+    </b>
+    <br>
+    <b>1970-2020</b>
+  </h1>
+    
+    <h4>This visualisation explores the population of all countries and territories in the world between 1970 to 2020.
+      <br>
+      The dataset which were used to create this visualisation can be found via this <a href="https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset">link</a>.
+    </h4>
+  </header>
+
+  <!-- Grid -->
+<div class="w3-row">
+
+  <!-- Blog entries -->
+  <div class="w3-col l8 s12">
+    <!-- Blog entry -->
+  
+
+    <div class="w3-card-4 w3-margin w3-white">
+      <div class="w3-container">
+    
+  
+      <div class="w3-container">
+        <h2><b>POPULATION DENSITY</b></h2>
+        <p>The population density for each country or territory is calculated by dividing population by area size. The area size is measered in square kilometers.</p>
+       
+
+        <div id="vis1" class= "vis-container"></div>
+      </br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr>
+      </div>
+    </div> 
+  </div>
+</div>
+
+
+  
+
+    <!-- Introduction menu -->
+  <div class="w3-col l4 ">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+    <div class="w3-container w3-white">
+      <div class="w3-container w3-white">
+      <h2><b>TOTAL POPULATION</b></h2>
+      <p>In 2020, the total population in the world was 7.75 billion. Of the 195 countries in the world, more than half of our population resided in only 7 countries </p>
+    <div id="vis2" class= "vis-container"></div>
+    <hr>
+  </div>
+  </div>
+</div>
+</div>
+
+
+  
+
+     <!-- Introduction menu -->
+     <div class="w3-col l4 ">
+      <!-- About Card -->
+      <div class="w3-card w3-margin w3-margin-top">
+        <div class="w3-container w3-white">
+          <h2><b>GROWTH RATE</b></h2>
+          <p>China is currently the most populous country in the world. However, the growth rate of China has been declining, whereas India's population
+            is projected to continue rising till 2050 and eventually outrank China as the most populous country. </p>
+        <div id="vis3" style="width:100%"></div>
+      </div>
+      </div><hr>
+  
+
+
+   
+
+  <script type="text/javascript">
+    var specVis1 = "./choroplath.json";
+    var specVis2 = "./donutchart.json";
+    var specVis3 = "./linechart.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>

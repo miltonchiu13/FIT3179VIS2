@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/miltonchiu13/FIT3179/main/data/world_population_top7countries.csv"
+  },
+  "width": 250,
+  "height": 400,
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "axis": {"labelFontSize": 16, "titleFontSize": 18}
+    }
+  },
+  "layer": [
+    {
+      "encoding": {
+        "color": {"field": "Country", "type": "nominal"},
+        "y": {
+          "field": "Population",
+          "type": "quantitative",
+          "axis": {"labelFontSize": 16, "titleFontSize": 18}
+        }
+      },
+      "layer": [
+        {"mark": {"type": "line", "point": true}},
+        {
+          "transform": [{"filter": {"param": "hover", "empty": false}}],
+          "mark": "point"
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"pivot": "Country", "value": "Population", "groupby": ["Year"]}
+      ],
+      "mark": "rule",
+      "encoding": {
+        "color": {
+          "field": "Country",
+          "type": "nominal",
+          "title": "Country",
+          "legend": {
+            "direction": "vertical",
+            "orient": "right",
+            "titleFontSize": 20,
+            "labelFontSize": 18
+          },
+          "scale": {
+            "domain": [
+              "China",
+              "India",
+              "United States",
+              "Brazil",
+              "Nigeria",
+              "Pakistan",
+              "Indonesia"
+            ],
+            "range": [
+              "#E03426",
+              "#f28e2b",
+              "#4f7cba",
+              "#f8b620",
+              "#33a65c",
+              "#fc719e",
+              "#aa3377",
+              "#bbbbbb"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {"value": 1, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "China", "type": "quantitative", "format": ".2e"},
+          {"field": "India", "type": "quantitative", "format": ".2e"},
+          {"field": "United States", "type": "quantitative", "format": ".2e"},
+          {"field": "Brazil", "type": "quantitative", "format": ".2e"},
+          {"field": "Indonesia", "type": "quantitative", "format": ".2e"},
+          {"field": "Pakistan", "type": "quantitative", "format": ".2e"},
+          {"field": "Nigeria", "type": "quantitative", "format": ".2e"}
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["Year"],
+            "nearest": true,
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
